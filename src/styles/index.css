@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Urbanist:wght@400;500;600;700&display=swap");
 
 @layer base {
   :root {
@@ -12,7 +11,7 @@
 
   body {
     min-height: 100vh;
-    font-family: "Urbanist", "Segoe UI", sans-serif;
+    font-family: "Google Sans Flex", "Segoe UI", sans-serif;
     color: #e6e9f2;
     background: radial-gradient(1200px 700px at 10% 10%, rgba(120, 88, 255, 0.15), transparent 60%),
       radial-gradient(900px 600px at 90% 0%, rgba(0, 194, 255, 0.12), transparent 55%),
@@ -44,7 +43,7 @@ body::before {
   h4,
   h5,
   h6 {
-    font-family: "Space Grotesk", "Segoe UI", sans-serif;
+    font-family: "Google Sans Flex", "Segoe UI", sans-serif;
     letter-spacing: -0.02em;
   }
 
@@ -307,6 +306,10 @@ body::before {
     @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-transparent px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-white/25 hover:bg-white/5;
   }
 
+  .swal2-cancel {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-transparent px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-white/25 hover:bg-white/5;
+  }
+
   .swal-toast {
     @apply mt-3 rounded-2xl border border-white/20 bg-transparent px-4 py-3 text-slate-100 shadow-[0_18px_40px_-22px_rgba(15,23,42,0.9)] backdrop-blur-2xl;
   }
@@ -327,6 +330,37 @@ body::before {
 
 .swal2-container.swal2-top {
   padding-top: 1.25rem;
+}
+
+.swal2-container .swal2-cancel,
+.swal2-container .swal-cancel {
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: #e2e8f0;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.swal2-container .swal2-cancel:hover,
+.swal2-container .swal-cancel:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+:root[data-theme="light"] .swal2-container .swal2-cancel,
+:root[data-theme="light"] .swal2-container .swal-cancel {
+  color: #0f172a;
+  border-color: rgba(15, 23, 42, 0.18);
+  background-color: rgba(15, 23, 42, 0.04);
+}
+
+:root[data-theme="light"] .swal2-container .swal2-cancel:hover,
+:root[data-theme="light"] .swal2-container .swal-cancel:hover {
+  background-color: rgba(15, 23, 42, 0.08);
+  border-color: rgba(15, 23, 42, 0.28);
 }
 
 @keyframes pulseGlow {
