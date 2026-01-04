@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { LogOut, Menu, Plus, Sparkles, X } from "lucide-react";
+import { Key, LogOut, Menu, Plus, Sparkles, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import ThemeToggle from "./ThemeToggle.jsx";
 
-export default function Navbar({ userEmail, onAdd, onLogout }) {
+export default function Navbar({ userEmail, onAdd, onLogout, onResetPassword }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleAdd = () => {
@@ -13,6 +14,11 @@ export default function Navbar({ userEmail, onAdd, onLogout }) {
   const handleLogout = () => {
     setIsOpen(false);
     onLogout?.();
+  };
+
+  const handleResetPassword = () => {
+    setIsOpen(false);
+    onResetPassword?.();
   };
 
   return (
@@ -35,6 +41,16 @@ export default function Navbar({ userEmail, onAdd, onLogout }) {
             {userEmail}
           </div>
           <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <motion.button
+              whileTap={{ scale: 0.96 }}
+              onClick={handleResetPassword}
+              className="btn-secondary"
+              type="button"
+            >
+              <Key className="h-4 w-4" />
+              Reset Password
+            </motion.button>
             <motion.button
               whileTap={{ scale: 0.96 }}
               onClick={handleAdd}
@@ -115,6 +131,16 @@ export default function Navbar({ userEmail, onAdd, onLogout }) {
               </div>
 
               <div className="flex flex-col gap-3">
+                <ThemeToggle showLabel className="w-full justify-between" />
+                <motion.button
+                  whileTap={{ scale: 0.96 }}
+                  onClick={handleResetPassword}
+                  className="btn-secondary w-full"
+                  type="button"
+                >
+                  <Key className="h-4 w-4" />
+                  Reset Password
+                </motion.button>
                 <motion.button
                   whileTap={{ scale: 0.96 }}
                   onClick={handleAdd}

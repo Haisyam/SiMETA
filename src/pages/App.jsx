@@ -203,9 +203,51 @@ export default function AppPage({ session }) {
     }
   };
 
+  const handleResetPassword = async () => {
+    if (!user?.email) {
+      await swalBase.fire({
+        icon: "error",
+        title: "Email tidak ditemukan",
+        text: "Silakan login ulang.",
+      });
+      return;
+    }
+
+    const result = await swalBase.fire({
+      icon: "info",
+      title: "Reset password?",
+      text: "Kami akan kirim link reset ke email kamu.",
+      showCancelButton: true,
+      confirmButtonText: "Kirim Link",
+      cancelButtonText: "Batal",
+    });
+
+    if (!result.isConfirmed) return;
+
+    const { error } = await supabase.auth.resetPasswordForEmail(user.email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+
+    if (error) {
+      await swalBase.fire({
+        icon: "error",
+        title: "Gagal kirim link",
+        text: error.message,
+      });
+      return;
+    }
+
+    toast.fire({ icon: "success", title: "Link reset dikirim ke email kamu" });
+  };
+
   return (
     <div className="pb-16">
-      <Navbar userEmail={user?.email} onAdd={handleOpenCreate} onLogout={handleLogout} />
+      <Navbar
+        userEmail={user?.email}
+        onAdd={handleOpenCreate}
+        onLogout={handleLogout}
+        onResetPassword={handleResetPassword}
+      />
 
       <motion.main
         initial={{ opacity: 0, y: 20 }}

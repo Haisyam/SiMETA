@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, UserPlus } from "lucide-react";
 import { supabase } from "../lib/supabase.js";
-import { swalBase, toast } from "../lib/alerts.js";
+import { swalBase } from "../lib/alerts.js";
+import ThemeToggle from "../components/ThemeToggle.jsx";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [loading, setLoading] = useState(false);
+  const allowedDomains = ["gmail.com", "haisyam.my.id"];
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -23,6 +25,16 @@ export default function Register() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const emailDomain = form.email.split("@")[1]?.toLowerCase();
+    if (!emailDomain || !allowedDomains.includes(emailDomain)) {
+      await swalBase.fire({
+        icon: "error",
+        title: "Email tidak diizinkan",
+        text: `Gunakan email @gmail.com`,
+      });
+      return;
+    }
 
     if (form.password.length < 6) {
       await swalBase.fire({
@@ -62,15 +74,14 @@ export default function Register() {
       return;
     }
 
-    toast.fire({
-      icon: "success",
-      title: "Akun dibuat! Cek email untuk verifikasi.",
-    });
-    navigate("/login");
+    navigate("/registered");
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4 py-10">
+    <div className="relative flex min-h-screen items-center justify-center px-4 py-10">
+      <div className="absolute right-5 top-5">
+        <ThemeToggle />
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}

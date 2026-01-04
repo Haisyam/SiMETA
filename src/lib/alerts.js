@@ -18,7 +18,9 @@ export const swalBase = Swal.mixin(sharedOptions);
 export const toast = Swal.mixin({
   ...sharedOptions,
   toast: true,
-  position: "top-end",
+  position: "top",
+  backdrop: false,
+  background: "transparent",
   showConfirmButton: false,
   timer: 2200,
   timerProgressBar: true,

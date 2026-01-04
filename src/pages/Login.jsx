@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Eye, EyeOff, LogIn } from "lucide-react";
 import { supabase } from "../lib/supabase.js";
 import { swalBase, toast } from "../lib/alerts.js";
+import ThemeToggle from "../components/ThemeToggle.jsx";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -39,7 +40,10 @@ export default function Login() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4 py-10">
+    <div className="relative flex min-h-screen items-center justify-center px-4 py-10">
+      <div className="absolute right-5 top-5">
+        <ThemeToggle />
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
@@ -105,7 +109,13 @@ export default function Login() {
           </motion.button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-slate-400">
+        <div className="mt-6 text-center">
+          <Link className="text-sm text-sky-300 hover:text-sky-200" to="/forgot-password">
+            Lupa password?
+          </Link>
+        </div>
+
+        <p className="mt-4 text-center text-sm text-slate-400">
           Belum punya akun?{" "}
           <Link className="text-sky-300 hover:text-sky-200" to="/register">
             Daftar sekarang

@@ -53,6 +53,147 @@
   }
 }
 
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="light"] body {
+  color: #0f172a;
+  background: radial-gradient(1200px 700px at 10% 10%, rgba(56, 189, 248, 0.2), transparent 60%),
+    radial-gradient(900px 600px at 90% 0%, rgba(129, 140, 248, 0.18), transparent 55%),
+    radial-gradient(700px 500px at 50% 90%, rgba(251, 191, 36, 0.18), transparent 60%),
+    linear-gradient(135deg, #f8f5ef 0%, #f7f8fb 50%, #f6f2ea 100%);
+}
+
+:root[data-theme="light"] body::before {
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+}
+
+:root[data-theme="light"] .glass-panel,
+:root[data-theme="light"] .glass-card,
+:root[data-theme="light"] .nav-blur,
+:root[data-theme="light"] .swal-popup,
+:root[data-theme="light"] .swal-toast {
+  background-color: rgba(255, 255, 255, 0.82);
+  border-color: rgba(15, 23, 42, 0.1);
+  box-shadow: 0 22px 50px -30px rgba(15, 23, 42, 0.2);
+}
+
+:root[data-theme="light"] .nav-blur {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+:root[data-theme="light"] .input-field,
+:root[data-theme="light"] .select-field {
+  background-color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(15, 23, 42, 0.15);
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .input-field::placeholder {
+  color: #94a3b8;
+}
+
+:root[data-theme="light"] .btn-ghost,
+:root[data-theme="light"] .btn-secondary {
+  color: #0f172a;
+  border-color: rgba(15, 23, 42, 0.18);
+  background-color: rgba(15, 23, 42, 0.04);
+}
+
+:root[data-theme="light"] .btn-ghost:hover,
+:root[data-theme="light"] .btn-secondary:hover {
+  background-color: rgba(15, 23, 42, 0.08);
+}
+
+:root[data-theme="light"] .badge {
+  color: #1f2937;
+  border-color: rgba(15, 23, 42, 0.12);
+  background-color: rgba(15, 23, 42, 0.04);
+}
+
+:root[data-theme="light"] .swal-title,
+:root[data-theme="light"] .swal-toast-title {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .swal-text {
+  color: #475569;
+}
+
+:root[data-theme="light"] .swal-toast {
+  border-color: rgba(15, 23, 42, 0.25);
+}
+
+:root[data-theme="light"] .swal2-container.swal2-top .swal2-popup.swal2-toast {
+  border: 1px solid rgba(15, 23, 42, 0.25);
+}
+
+:root[data-theme="light"] .bg-white\/5 {
+  background-color: rgba(15, 23, 42, 0.04);
+}
+
+:root[data-theme="light"] .bg-white\/10 {
+  background-color: rgba(15, 23, 42, 0.06);
+}
+
+:root[data-theme="light"] .bg-white\/15 {
+  background-color: rgba(15, 23, 42, 0.1);
+}
+
+:root[data-theme="light"] .border-white\/10 {
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+:root[data-theme="light"] .border-white\/15 {
+  border-color: rgba(15, 23, 42, 0.16);
+}
+
+:root[data-theme="light"] .border-white\/25 {
+  border-color: rgba(15, 23, 42, 0.22);
+}
+
+:root[data-theme="light"] .border-white\/30 {
+  border-color: rgba(15, 23, 42, 0.28);
+}
+
+:root[data-theme="light"] .bg-slate-900\/60 {
+  background-color: rgba(255, 255, 255, 0.92);
+}
+
+:root[data-theme="light"] .bg-slate-900\/70 {
+  background-color: rgba(255, 255, 255, 0.96);
+}
+
+:root[data-theme="light"] .bg-slate-800\/70 {
+  background-color: rgba(15, 23, 42, 0.06);
+}
+
+:root[data-theme="light"] .bg-black\/60 {
+  background-color: rgba(15, 23, 42, 0.35);
+}
+
+:root[data-theme="light"] .bg-sky-950\/80 {
+  background-color: rgba(224, 242, 254, 0.95);
+}
+
+:root[data-theme="light"] .text-slate-100 {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .text-slate-200 {
+  color: #1f2937;
+}
+
+:root[data-theme="light"] .text-slate-300 {
+  color: #334155;
+}
+
+:root[data-theme="light"] .text-slate-400 {
+  color: #64748b;
+}
+
 @layer components {
   .glass-panel {
     @apply border border-white/10 bg-white/5 shadow-[0_20px_60px_-25px_rgba(15,23,42,0.8)] backdrop-blur-xl;
@@ -115,7 +256,7 @@
   }
 
   .swal-toast {
-    @apply rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-slate-100 shadow-[0_20px_60px_-25px_rgba(15,23,42,0.8)] backdrop-blur-xl;
+    @apply mt-3 rounded-2xl border border-white/20 bg-transparent px-4 py-3 text-slate-100 shadow-[0_18px_40px_-22px_rgba(15,23,42,0.9)] backdrop-blur-2xl;
   }
 
   .swal-toast-title {
@@ -130,6 +271,10 @@
 
 .swal2-timer-progress-bar {
   background: linear-gradient(90deg, rgba(56, 189, 248, 0.9), rgba(99, 102, 241, 0.9));
+}
+
+.swal2-container.swal2-top {
+  padding-top: 1.25rem;
 }
 
 @keyframes pulseGlow {
