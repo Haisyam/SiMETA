@@ -1,10 +1,64 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Key, LogOut, Menu, Plus, Sparkles, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle.jsx";
+import { useTheme } from "../lib/theme.jsx";
 
 export default function Navbar({ userEmail, onAdd, onLogout, onResetPassword }) {
   const [isOpen, setIsOpen] = useState(false);
+  const { theme } = useTheme();
+  const [isMobile, setIsMobile] = useState(false);
+  const closeTimerRef = useRef(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+    const media = window.matchMedia("(max-width: 640px)");
+    const update = () => setIsMobile(media.matches);
+    update();
+    if (media.addEventListener) {
+      media.addEventListener("change", update);
+    } else {
+      media.addListener(update);
+    }
+
+    return () => {
+      if (media.removeEventListener) {
+        media.removeEventListener("change", update);
+      } else {
+        media.removeListener(update);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isOpen) {
+      root.classList.add("sidenav-open");
+      root.classList.remove("sidenav-closing");
+    } else {
+      root.classList.remove("sidenav-open");
+      root.classList.add("sidenav-closing");
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = setTimeout(() => {
+        root.classList.remove("sidenav-closing");
+        closeTimerRef.current = null;
+      }, 360);
+    }
+
+    return () => {
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+        closeTimerRef.current = null;
+      }
+      root.classList.remove("sidenav-open");
+      root.classList.remove("sidenav-closing");
+    };
+  }, [isOpen]);
+
+  const reduceMotion = theme === "light" && isMobile;
+  const panelTransition = reduceMotion
+    ? { duration: 0 }
+    : { type: "tween", duration: 0.22, ease: [0.4, 0, 0.2, 1] };
 
   const handleAdd = () => {
     setIsOpen(false);
@@ -89,6 +143,7 @@ export default function Navbar({ userEmail, onAdd, onLogout, onResetPassword }) 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: reduceMotion ? 0 : 0.18 }}
             className="fixed inset-0 z-50 sm:hidden"
           >
             <motion.button
@@ -101,7 +156,7 @@ export default function Navbar({ userEmail, onAdd, onLogout, onResetPassword }) 
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 260, damping: 28 }}
+              transition={panelTransition}
               className="sidenav-panel absolute right-0 top-0 flex h-screen w-72 flex-col gap-6 border-l border-sky-300/20 bg-sky-950/80 px-5 py-6 backdrop-blur-xl"
             >
               <div className="flex items-center justify-between">
