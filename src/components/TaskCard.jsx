@@ -54,6 +54,11 @@ export default function TaskCard({ task, onEdit, onDelete }) {
         <div>
           <h3 className="text-lg font-semibold text-slate-100">{task.title}</h3>
           <p className="text-sm text-slate-400">{task.course}</p>
+          {task.notes && (
+            <p className="mt-2 whitespace-pre-wrap text-sm text-slate-300">
+              {task.notes}
+            </p>
+          )}
         </div>
         <span className={`status-pill ${STATUS_STYLE[task.status]}`}>{STATUS_LABEL[task.status]}</span>
       </div>

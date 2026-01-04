@@ -109,6 +109,7 @@ export default function AppPage({ session }) {
           title: payload.title,
           course: payload.course,
           due_date: payload.due_date,
+          notes: payload.notes,
           status: payload.status,
         })
         .eq("id", editingTask.id);
@@ -139,6 +140,7 @@ export default function AppPage({ session }) {
         title: payload.title,
         course: payload.course,
         due_date: payload.due_date,
+        notes: payload.notes,
         status: payload.status,
       });
 

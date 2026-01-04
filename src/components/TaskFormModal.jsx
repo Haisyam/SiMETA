@@ -6,6 +6,7 @@ const DEFAULT_FORM = {
   title: "",
   course: "",
   due_date: "",
+  notes: "",
   status: "todo",
 };
 
@@ -26,6 +27,7 @@ export default function TaskFormModal({ isOpen, onClose, onSave, saving, initial
         title: initialData.title ?? "",
         course: initialData.course ?? "",
         due_date: toLocalInputValue(initialData.due_date),
+        notes: initialData.notes ?? "",
         status: initialData.status ?? "todo",
       });
       return;
@@ -110,6 +112,16 @@ export default function TaskFormModal({ isOpen, onClose, onSave, saving, initial
                   onChange={handleChange}
                   placeholder="Contoh: Pemrograman Web"
                   required
+                />
+              </div>
+              <div>
+                <label className="mb-2 block text-sm text-slate-300">Catatan (opsional)</label>
+                <textarea
+                  className="input-field min-h-[96px] resize-none"
+                  name="notes"
+                  value={form.notes}
+                  onChange={handleChange}
+                  placeholder="Tambahkan catatan tambahan jika perlu"
                 />
               </div>
               <div>
