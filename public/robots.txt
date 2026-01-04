@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /app
+Sitemap: https://simeta.vercel.app/sitemap.xml
