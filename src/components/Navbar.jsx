@@ -94,7 +94,7 @@ export default function Navbar({ userEmail, onAdd, onLogout, onResetPassword }) 
             <motion.button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              className="sidenav-backdrop absolute inset-0 bg-black/60"
               aria-label="Tutup menu"
             />
             <motion.aside
@@ -102,7 +102,7 @@ export default function Navbar({ userEmail, onAdd, onLogout, onResetPassword }) 
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 260, damping: 28 }}
-              className="absolute right-0 top-0 flex h-screen w-72 flex-col gap-6 border-l border-sky-300/20 bg-sky-950/80 px-5 py-6 backdrop-blur-2xl"
+              className="sidenav-panel absolute right-0 top-0 flex h-screen w-72 flex-col gap-6 border-l border-sky-300/20 bg-sky-950/80 px-5 py-6 backdrop-blur-xl"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">

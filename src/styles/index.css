@@ -130,6 +130,35 @@
   border: 1px solid rgba(15, 23, 42, 0.25);
 }
 
+.sidenav-panel {
+  will-change: transform;
+}
+
+.sidenav-backdrop {
+  will-change: opacity;
+}
+
+:root[data-theme="light"] .sidenav-panel {
+  background-color: rgba(240, 248, 255, 0.96);
+  border-color: rgba(15, 23, 42, 0.15);
+  backdrop-filter: blur(6px);
+}
+
+:root[data-theme="light"] .sidenav-backdrop {
+  background-color: rgba(15, 23, 42, 0.2);
+  backdrop-filter: none;
+}
+
+@media (max-width: 640px) {
+  .sidenav-panel {
+    backdrop-filter: blur(12px);
+  }
+
+  :root[data-theme="light"] .sidenav-panel {
+    backdrop-filter: blur(4px);
+  }
+}
+
 :root[data-theme="light"] .bg-white\/5 {
   background-color: rgba(15, 23, 42, 0.04);
 }
