@@ -50,9 +50,10 @@ export default function Login() {
         <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
           Masuk
         </p>
-        <h1 className="mt-2 text-2xl font-semibold text-slate-100">
-          Deadline Tracker Mahasiswa
-        </h1>
+        <h1 className="mt-2 text-2xl font-semibold text-slate-100">SIMETA</h1>
+        <p className="mt-2 text-sm text-slate-400">
+          Sistem Informasi Manajemen Tugas Akademik.
+        </p>
         <p className="mt-2 text-sm text-slate-400">
           Kelola tugas dan deadline kamu dengan lebih fokus.
         </p>

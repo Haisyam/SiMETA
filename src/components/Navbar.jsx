@@ -23,8 +23,10 @@ export default function Navbar({ userEmail, onAdd, onLogout }) {
             <Sparkles className="h-5 w-5 text-sky-200" />
           </div>
           <div>
-            <p className="text-sm uppercase tracking-[0.25em] text-slate-400">Deadline Tracker</p>
-            <h1 className="text-lg font-semibold text-slate-100">Mahasiswa</h1>
+            <p className="text-sm uppercase tracking-[0.25em] text-slate-400">SIMETA</p>
+            <h1 className="text-base font-semibold text-slate-100 sm:text-lg">
+              Sistem Informasi Manajemen Tugas Akademik
+            </h1>
           </div>
         </div>
 
@@ -92,10 +94,10 @@ export default function Navbar({ userEmail, onAdd, onLogout }) {
                     <Sparkles className="h-4 w-4 text-sky-200" />
                   </div>
                   <div>
-                    <p className="text-xs uppercase tracking-[0.25em] text-slate-400">
-                      Deadline Tracker
+                    <p className="text-xs uppercase tracking-[0.25em] text-slate-400">SIMETA</p>
+                    <p className="text-sm font-semibold text-slate-100">
+                      Sistem Informasi Manajemen Tugas Akademik
                     </p>
-                    <p className="text-sm font-semibold text-slate-100">Menu</p>
                   </div>
                 </div>
                 <button
